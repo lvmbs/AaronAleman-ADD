@@ -38,7 +38,7 @@ menu(){
 	    let anyo--
 	    #Condicional que determina si es año bisiesto
             echo ""
-      	    if [[ ($((anyo % 4)) -eq 0) && ($((anyo % 100)) -ne 0 || $((anyo % 400)) -eq 0) ]]; then
+      	    if [[ $((anyo % 4)) -eq 0 && ($((anyo % 100)) -ne 0 || $((anyo % 400)) -eq 0) ]]; then
                echo "$anyo es un año bisiesto"
             else
                echo "$anyo no es un año bisiesto"
@@ -57,7 +57,7 @@ menu(){
 
 	    #Sobrescribe el archivo de config. de red por una plantilla
 	    #que llega a antes del primer cambio
-            cat /etc/netplan/redconfig > /etc/netplan/01-network-manager-all.yaml
+            cat configtemplate > /etc/netplan/01-network-manager-all.yaml
             
             #Introducción linea a linea de lo restante + los parametros recogidos
             echo "     - $ip/$masc" >> /etc/netplan/01-network-manager-all.yaml
