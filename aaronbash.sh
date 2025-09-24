@@ -38,7 +38,7 @@ menu(){
 	    let anyo--
 	    #Condicional que determina si es año bisiesto
             echo ""
-      	    if [ $((anyo % 4)) -eq 0 ]; then
+      	    if [[ ($((anyo % 4)) -eq 0) && ($((anyo % 100)) -ne 0 || $((anyo % 400)) -eq 0) ]]; then
                echo "$anyo es un año bisiesto"
             else
                echo "$anyo no es un año bisiesto"
