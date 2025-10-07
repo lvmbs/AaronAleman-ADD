@@ -1,0 +1,9 @@
+Comprobacion de si el objeto existe: Get-ADObject -LDAPFilter "(cn=$objeto)"
+
+Parametros
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$pm2,
+    [string]$pm3,
+    [string]$pm4
+)
