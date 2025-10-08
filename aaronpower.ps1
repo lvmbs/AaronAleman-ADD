@@ -134,6 +134,77 @@ function diskp {
     }
 }
 
+
+#FUNCION CONTRASEÑA
+function contrasena {
+    [string]$contra = Read-Host "Introduce una contraseña"
+
+    for ($i = 0; $i -lt $contra.Length; $i++) {
+        if ($contra[$i] -cmatch '[a-z]') {
+            $minus = 1
+        }
+        elseif ($contra[$i] -cmatch '[A-Z]') {
+            $mayus = 1
+        }
+        elseif ($contra[$i] -match '[0-9]') {
+            $num = 1
+        }
+        elseif ($contra[$i] -notmatch '^[a-zA-Z0-9]$') {
+            $esp = 1
+        }
+    }
+
+    if (($contra.Length -gt 7) -and ($minus -eq 1) -and ($mayus -eq 1) -and ($num -eq 1) -and ($esp -eq 1)) {
+        Write-Host "La contraseña es válida"
+    }
+    else {
+        Write-Host "La contraseña es inválida"
+    }
+}
+
+
+#FUNCION Fibonacci
+function fibonacci {
+    $x = 0
+    $y = 1
+    $n = Read-Host "Cuantos numeros de Fibonacci quieres ver"
+    for($i = 0; $i -lt $n; $i++) {
+        Write-Host "$x "
+        $new = $x + $y
+        $x = $y
+        $y = $new
+    }
+}
+
+
+#FUNCION FibonacciR
+function fibonacciR {
+    param($n)
+    if ($n -le 1) {
+        return $n
+    }
+    else {
+        return (fibonacciR ($n - 1)) + (fibonacciR ($n - 2))
+    }
+}
+
+function fibonacci2 {
+    $n = Read-Host "Cuantos numeros de Fibonacci quieres ver"
+
+    for ($i = 0; $i -lt $n; $i++) {
+        Write-Host (fibonacciR $i)
+    }
+}
+
+
+#FUNCION Monitoreo
+function monitoreo {
+    (Get-Counter '\Procesador(_Total)\% de tiempo de procesador' -SampleInterval 5 -MaxSamples 5).CounterSamples.CookedValue |
+    Measure-Object -Average |
+    ForEach-Object {"Promedio de CPU: $([math]::Round($_.Average,2)) %"}
+}
+
+
 Write-Host "******************"
 Write-Host "1. Pizzas         "
 Write-Host "2. Dias           "
@@ -156,4 +227,8 @@ switch ($opcion) {
     3 {Usuarios}
     4 {Grupos}
     5 {diskp}
+    6 {contrasena}
+    7 {fibonacci}
+    8 {fibonacci2}
+    9 {monitoreo}
 }
