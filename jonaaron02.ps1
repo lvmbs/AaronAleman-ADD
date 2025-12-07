@@ -1,38 +1,3 @@
-﻿<#
-==========================================
-TRAZABILIDAD Y USO DE IA
-==========================================
-
-PROMPT UTILIZADO:
-"Crea un script de PowerShell para administración de Active Directory que permita crear grupos,
-crear usuarios con contraseñas aleatorias, modificar usuarios, asignar usuarios a grupos y listar
-objetos. Debe incluir validaciones, modo --dry-run y ser apto para un estudiante de ASIR con
-conocimientos básicos de scripting."
-
-BLOQUES GENERADOS POR IA:
-- Estructura base del script con parámetros (líneas 50-62)
-- Función Generar-ContrasenaAleatoria completa (líneas 150-178)
-- Función Validar-ComplejidadContrasena completa (líneas 183-221)
-- Lógica de validación de ámbito/tipo en Crear-Grupo (líneas 228-238)
-- Estructura try-catch en todas las funciones
-
-BLOQUES MODIFICADOS MANUALMENTE:
-- Función Mostrar-Ayuda: Personalizada con ejemplos específicos (líneas 70-117)
-- Función Escribir-Log: Añadido manejo de colores personalizados (líneas 122-145)
-- Función Crear-Usuario: Añadidas validaciones adicionales de UO (líneas 303-315)
-- Función Modificar-Usuario: Mejorada lógica de estados (líneas 370-380)
-- Flujo principal: Reorganizado para mejor legibilidad (líneas 505-545)
-
-BLOQUES ESCRITOS COMPLETAMENTE MANUAL:
-- Comentarios explicativos en español
-- Mensajes de usuario personalizados
-- Variable global $ModoSimulacion
-- Integración del modo --dry-run en cada función
-==========================================
-#>
-
-
-
 # ========================================
 # PARÁMETROS DEL SCRIPT
 # ========================================
